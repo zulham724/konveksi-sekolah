@@ -1,0 +1,262 @@
+<template>
+  <transition
+    enter-active-class="animated fadeInUp"
+    leave-active-class="animated fadeOutLeft"
+    appear
+    :duration="700"
+  >
+    <q-page>
+      <q-header class="bg-transparent text-black">
+        <q-toolbar>
+          <q-btn
+            style="width:10%;"
+            v-go-back="'/kustombaju/kustomjahit'"
+            flat
+            icon="arrow_back"
+            color="black"
+            class="bg-transparent"
+            size="30px;"
+          />
+          <div v-for="nomor in nomor.data" v-bind:key="nomor.id">
+            <div v-if="nomor.key === 'site.titlepantscustom'">
+              <q-toolbar-title class="text-h6"
+                >{{ nomor.value }}
+              </q-toolbar-title>
+            </div>
+          </div>
+        </q-toolbar>
+      </q-header>
+      <q-page-container>
+        <q-card
+          class="my-card full-height"
+          style=" margin-top: 10px; margin-buttom:10px; margin-left:10px; margin-right:10px; border-radius:20px; "
+          shadow-box
+        >
+          <div v-for="nomor in nomor.data" v-bind:key="nomor.id">
+            <div v-if="nomor.key === 'site.celanakustom'">
+              <img
+                :src="
+                  'http://phpstack-537239-1742382.cloudwaysapps.com/storage/' +
+                    nomor.value
+                "
+                style="width:100%; border-top-left-radius:20px; border-top-right-radius:20px;"
+              />
+            </div>
+          </div>
+          <q-card-section>
+            <div v-for="nomor in nomor.data" v-bind:key="nomor.id">
+              <div v-if="nomor.key === 'site.titlepantscustom'">
+                <div class="text-h6">
+                  {{ nomor.value }}
+                </div>
+              </div>
+            </div>
+          </q-card-section>
+          <div v-for="nomor in nomor.data" v-bind:key="nomor.id">
+            <div v-if="nomor.key === 'site.contentpantscustom'">
+              <q-card-section class="q-pt-none"
+                >{{ nomor.value }}
+              </q-card-section>
+            </div>
+          </div>
+          <div class="row justify-center">
+            <q-btn
+              flat
+              size="15px;"
+              class="bg-primary"
+              style="margin:10px; border-radius : 20px; color:#ffff; margin-left:10px; margin-rigth:10px; width: 93%;"
+              @click="open('bottom')"
+              >Pesan</q-btn
+            >
+          </div>
+        </q-card>
+      </q-page-container>
+
+      <q-dialog v-model="dialog" :position="position" width="100%;">
+        <q-stepper
+          v-model="step"
+          vertical
+          color="primary"
+          animated
+          style="border-top-left-radius: 30px; border-top-right-radius: 30px;"
+        >
+          <div class="text-subtitle1" style="margin:10px; font-weight: bold;">
+            Masukan data pemesanan
+          </div>
+          <q-step
+            :name="1"
+            title="Pilih pemesanan"
+            icon="edit"
+            :done="step > 1"
+          >
+            <q-input
+              dense
+              rounded
+              outlined
+              type="number"
+              v-model="jumlahpemesanan"
+              label="Jumlah pemesanan"
+              style="margin-top:10px; width:100%;"
+            />
+            <q-select
+              dense
+              rounded
+              outlined
+              v-model="jenisbahan"
+              :options="optionjenis"
+              label="Jenis bahan"
+              style="margin-top:10px; width:100%;"
+            />
+            <q-select
+              dense
+              rounded
+              outlined
+              v-model="jenismodel"
+              :options="optionmodel"
+              label="Seragam"
+              style="margin-top:10px; width:100%;"
+            />
+            <q-input
+              dense
+              rounded
+              outlined
+              type="textarea"
+              v-model="keteranganpemesanan"
+              label="Keterangan pemesanan"
+              style="margin-top:10px; width:100%;"
+            />
+
+            <q-stepper-navigation>
+              <q-btn rounded @click="step = 2" color="primary" label="Lanjut" />
+            </q-stepper-navigation>
+          </q-step>
+
+          <q-step
+            :name="2"
+            title="Identitas pemesan"
+            icon="edit"
+            :done="step > 2"
+          >
+            <q-input
+              dense
+              rounded
+              outlined
+              v-model="namapemesan"
+              label="Nama lengkap"
+              style="margin-top:10px; width:100%;"
+            />
+            <q-select
+              dense
+              rounded
+              outlined
+              v-model="jeniskelamin"
+              :options="optionkelamin"
+              label="Jenis kelamin"
+              style="margin-top:10px; width:100%;"
+            />
+            <q-select
+              dense
+              rounded
+              outlined
+              v-model="jurusan"
+              :options="optionjurusan"
+              label="Jurusan"
+              style="margin-top:10px; width:100%;"
+            />
+            <q-input
+              dense
+              rounded
+              outlined
+              type="textarea"
+              v-model="alamatpemesanan"
+              label="Alamat"
+              style="margin-top:10px;"
+            />
+            <q-stepper-navigation>
+              <div v-for="nomor in nomor.data" v-bind:key="nomor.id">
+                <div v-if="nomor.key === 'site.number_wa'">
+                  <q-btn
+                    rounded
+                    @click="
+                      redirect(
+                        'https://wa.me/62' +
+                          nomor.value +
+                          '?text=PEMESANAN%20CELANA%20KUSTOM%20%0D%0A%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%20%0D%0ANAMA%20PEMESAN%20%20%3A%20%20' +
+                          namapemesan +
+                          '%20%0D%0AJUMLAH%20PEMESANAN%20%20%3A%20%20' +
+                          jumlahpemesanan +
+                          '%20%0D%0AJENIS%20BAHAN%20%20%3A%20%20' +
+                          jenisbahan +
+                          '%20%0D%0ASERAGAM%20%20%3A%20%20' +
+                          jenismodel +
+                          '%20%0D%0AJENIS%20KELAMIN%20%20%3A%20%20' +
+                          jeniskelamin +
+                          '%20%0D%0AJURUSAN%20%20%3A%20%20' +
+                          jurusan +
+                          '%20%0D%0AALAMAT%20%20%3A%20%20' +
+                          alamatpemesanan +
+                          '%20%0D%0AKETERANGAN%20%20%3A%20%20' +
+                          keteranganpemesanan +
+                          '%20%0D%0A%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D'
+                      )
+                    "
+                    color="primary"
+                    label="Selesai"
+                  />
+                </div>
+              </div>
+              <q-btn
+                rounded
+                flat
+                @click="step = 1"
+                color="primary"
+                label="Kembali"
+                class="q-ml-sm"
+              />
+            </q-stepper-navigation>
+          </q-step>
+        </q-stepper>
+      </q-dialog>
+    </q-page>
+  </transition>
+</template>
+<script>
+import axios from "Axios";
+export default {
+  data() {
+    return {
+      step: 1,
+      nomor: {},
+      namapemesan: null,
+      jenisbahan: null,
+      jumlahpemesanan: null,
+      jenismodel: null,
+      jeniskelamin: null,
+      jurusan: null,
+      keteranganpemesanan: null,
+      alamatpemesanan: null,
+      dialog: false,
+      position: top,
+      right: false,
+      optionjenis: ["Japan drill", "Taipan drill", "American drill"],
+      optionkelamin: ["Laki-laki", "Perempuan"],
+      optionmodel: ["Osis", "Batik", "Pramuka", "Wearpack"],
+      optionjurusan: ["TKJ", "TB", "OTKP", "AKL", "BDP", "MM"]
+    };
+  },
+  mounted() {
+    axios
+      .get("http://phpstack-537239-1742382.cloudwaysapps.com/api/setting")
+      .then(response => (this.nomor = response));
+  },
+  methods: {
+    open(position) {
+      this.position = position;
+      this.dialog = true;
+    },
+    redirect(url) {
+      window.location = url;
+    }
+  }
+};
+</script>
