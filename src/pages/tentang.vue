@@ -6,7 +6,7 @@
     :duration="700"
   >
     <q-page class>
-      <q-header class="bg-transparent text-black">
+      <q-header class="bg-primary text-white">
         <q-toolbar>
           <q-toolbar-title>
             <q-btn
@@ -19,7 +19,7 @@
               <div class="row items-center">
                 <span
                   class="material-icons"
-                  style="color:black; font-size:30px;"
+                  style="color:white; font-size:30px;"
                 >
                   arrow_back
                 </span>

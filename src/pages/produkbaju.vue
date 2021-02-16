@@ -10,7 +10,7 @@
                   arrow_back
                 </span>
               </q-btn>
-              Produk baju
+              Beli produk
             </q-toolbar-title>
           </q-toolbar>
         </q-header>

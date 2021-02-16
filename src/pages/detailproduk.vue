@@ -156,6 +156,18 @@
           </q-dialog>
         </div>
       </div>
+      <div v-for="nomor in nomor.data" v-bind:key="nomor.id">
+        <div v-if="nomor.key === 'site.number_wa'">
+          <q-page-sticky position="bottom-right" :offset="[18, 18]">
+            <q-btn
+              fab
+              icon="phone"
+              color="primary"
+              @click="redirect('https://wa.me/62' + nomor.value + '?text=Hai')"
+            />
+          </q-page-sticky>
+        </div>
+      </div>
     </q-page>
   </transition>
 </template>

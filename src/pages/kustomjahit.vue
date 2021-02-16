@@ -38,7 +38,7 @@
                       'http://phpstack-537239-1742382.cloudwaysapps.com/storage/' +
                         imgmenu.value
                     "
-                    style="width: 100%; height:150px; border-radius:20px;"
+                    style="width: 100%; height:200px; border-radius:20px;"
                   >
                     <template v-slot:loading>
                       <div class="text-subtitle1 text-white"></div>
@@ -59,10 +59,11 @@
               </div>
             </div>
           </div>
+
           <!-- </transition> -->
         </div>
         <div class="row justify-center" style="margin-top:10px;">
-          <div class="col-6" style="height:150px; ">
+          <div class="col-6" style="height:200px; ">
             <!-- <transition
               enter-active-class="animated fadeInLeft"
               appear
@@ -78,7 +79,7 @@
                       'http://phpstack-537239-1742382.cloudwaysapps.com/storage/' +
                         imgmenu.value
                     "
-                    style="width: 100%; height:150px; border-radius:20px;"
+                    style="width: 100%; height:200px; border-radius:20px;"
                   >
                     <template v-slot:loading>
                       <div class="text-subtitle1 text-white"></div>
@@ -118,7 +119,7 @@
                       'http://phpstack-537239-1742382.cloudwaysapps.com/storage/' +
                         imgmenu.value
                     "
-                    style="width: 100%; height:150px; border-radius:20px;"
+                    style="width: 100%; height:200px; border-radius:20px;"
                   >
                     <template v-slot:loading>
                       <div class="text-subtitle1 text-white"></div>
@@ -157,7 +158,7 @@
                     'http://phpstack-537239-1742382.cloudwaysapps.com/storage/' +
                       imgmenu.value
                   "
-                  style="width: 100%; height:150px; border-radius:20px;"
+                  style="width: 100%; height:200px; border-radius:20px;"
                 >
                   <template v-slot:loading>
                     <div class="text-subtitle1 text-white"></div>
@@ -179,6 +180,20 @@
         </div>
         <!-- </transition> -->
       </q-page-container>
+      <div v-for="imgmenu in imgmenu.data" v-bind:key="imgmenu.id">
+        <div v-if="imgmenu.key === 'site.number_wa'">
+          <q-page-sticky position="bottom-right" :offset="[18, 18]">
+            <q-btn
+              fab
+              icon="phone"
+              color="primary"
+              @click="
+                redirect('https://wa.me/62' + imgmenu.value + '?text=Hai')
+              "
+            />
+          </q-page-sticky>
+        </div>
+      </div>
     </q-page>
   </transition>
 </template>
@@ -196,6 +211,11 @@ export default {
     axios
       .get("http://phpstack-537239-1742382.cloudwaysapps.com/api/setting")
       .then(response => (this.imgmenu = response));
+  },
+  methods: {
+    redirect(url) {
+      window.location = url;
+    }
   }
 };
 </script>

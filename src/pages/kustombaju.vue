@@ -20,7 +20,7 @@
         v-model="slide"
         arrows
         infinite
-        style="height:200px; width:100%;"
+        style="height:250px; width:100%;"
       >
         <q-carousel-slide
           v-for="imgslider in imgslider.data"
@@ -48,7 +48,7 @@
                   'http://phpstack-537239-1742382.cloudwaysapps.com/storage/' +
                     fotomenu.value
                 "
-                style="border-top-left-radius:30px; border-top-right-radius:30px; height:150px; "
+                style="border-top-left-radius:30px; border-top-right-radius:30px; height:200px; "
               >
                 <template v-slot:loading>
                   <div class="text-subtitle1 text-white"></div>
@@ -85,7 +85,7 @@
                   'http://phpstack-537239-1742382.cloudwaysapps.com/storage/' +
                     fotomenu.value
                 "
-                style=" background-size : cover; width: 100%; height:150px; border-bottom-left-radius:30px "
+                style=" background-size : cover; width: 100%; height:200px; border-bottom-left-radius:30px "
               >
                 <template v-slot:loading>
                   <div class="text-subtitle1 text-white"></div>
@@ -109,7 +109,7 @@
           style="width: 100%; height:90%; border-radius:30px 30px 0px 0px"
         >
           <div class="kartu" style="width:100%;">
-            <div class="text-h6" style="margin:10px; font-weight: bold;">
+            <div class="text-h7" style="margin:10px; font-weight: bold;">
               Masukan data pemesanan
             </div>
             <q-input
@@ -200,7 +200,7 @@
                   'http://phpstack-537239-1742382.cloudwaysapps.com/storage/' +
                     fotomenu.value
                 "
-                style="border-bottom-right-radius:30px; width: 100%; height:150px; "
+                style="border-bottom-right-radius:30px; width: 100%; height:200px; "
               >
                 <template v-slot:loading>
                   <div class="text-subtitle1 text-white"></div>
@@ -222,7 +222,7 @@
     <q-dialog v-model="dialogsablon" :position="position" width="100%;">
       <q-card style="width: 100%; height:90%; border-radius:30px 30px 0px 0px">
         <div class="kartu" style="width:100%;">
-          <div class="text-h6" style="margin:10px; font-weight: bold;">
+          <div class="text-h7" style="margin:10px; font-weight: bold;">
             Masukan data pemesanan
           </div>
           <q-input
@@ -312,6 +312,18 @@
         </div>
       </q-card>
     </q-dialog>
+    <div v-for="fotomenu in fotomenu.data" v-bind:key="fotomenu.id">
+      <div v-if="fotomenu.key === 'site.number_wa'">
+        <q-page-sticky position="bottom-right" :offset="[18, 18]">
+          <q-btn
+            fab
+            icon="phone"
+            color="primary"
+            @click="redirect('https://wa.me/62' + fotomenu.value + '?text=Hai')"
+          />
+        </q-page-sticky>
+      </div>
+    </div>
   </q-page>
 </template>
 <script>

@@ -1,8 +1,8 @@
 {
-  "name": "demo",
+  "name": "simvon1",
   "version": "0.0.1",
-  "description": "This demo quasar",
-  "productName": "demo",
+  "description": "Sisem Konveksi Online Smk Negeri 1 Sragen",
+  "productName": "SIMVON1",
   "author": "Dimas Indra Setiawan <dim.dim10032000@gmail.com>",
   "private": true,
   "scripts": {

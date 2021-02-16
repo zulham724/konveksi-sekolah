@@ -9,7 +9,7 @@
       <q-header class="bg-transparent text-black">
         <q-toolbar>
           <q-btn
-            style="width:10%;"
+            style="width:10%; margin-right:5px;"
             v-go-back="'/kustombaju/kustomjahit'"
             flat
             icon="arrow_back"
@@ -50,15 +50,19 @@
                   {{ nomor.value }}
                 </div>
               </div>
+              <div v-if="nomor.key === 'site.contentpantscustom'">
+                <q-input
+                  input-style="margin-top:0px; width:95%;"
+                  :value="nomor.value"
+                  filled
+                  readonly
+                  autogrow
+                  type="textarea"
+                  bg-color="white"
+                />
+              </div>
             </div>
           </q-card-section>
-          <div v-for="nomor in nomor.data" v-bind:key="nomor.id">
-            <div v-if="nomor.key === 'site.contentpantscustom'">
-              <q-card-section class="q-pt-none"
-                >{{ nomor.value }}
-              </q-card-section>
-            </div>
-          </div>
           <div class="row justify-center">
             <q-btn
               flat
@@ -80,7 +84,7 @@
           animated
           style="border-top-left-radius: 30px; border-top-right-radius: 30px;"
         >
-          <div class="text-subtitle1" style="margin:10px; font-weight: bold;">
+          <div class="text-h7" style="margin:10px; font-weight: bold;">
             Masukan data pemesanan
           </div>
           <q-step
@@ -123,7 +127,7 @@
               type="textarea"
               v-model="keteranganpemesanan"
               label="Keterangan pemesanan"
-              style="margin-top:10px; width:100%;"
+              style="margin-top:10px; height:80px; width:100%;"
             />
 
             <q-stepper-navigation>
@@ -170,7 +174,7 @@
               type="textarea"
               v-model="alamatpemesanan"
               label="Alamat"
-              style="margin-top:10px;"
+              style="margin-top:10px; height:80px;"
             />
             <q-stepper-navigation>
               <div v-for="nomor in nomor.data" v-bind:key="nomor.id">
@@ -203,20 +207,32 @@
                     color="primary"
                     label="Selesai"
                   />
+                  <q-btn
+                    rounded
+                    flat
+                    @click="step = 1"
+                    color="primary"
+                    label="Kembali"
+                    class="q-ml-sm"
+                  />
                 </div>
               </div>
-              <q-btn
-                rounded
-                flat
-                @click="step = 1"
-                color="primary"
-                label="Kembali"
-                class="q-ml-sm"
-              />
             </q-stepper-navigation>
           </q-step>
         </q-stepper>
       </q-dialog>
+      <div v-for="nomor in nomor.data" v-bind:key="nomor.id">
+        <div v-if="nomor.key === 'site.number_wa'">
+          <q-page-sticky position="bottom-right" :offset="[18, 18]">
+            <q-btn
+              fab
+              icon="phone"
+              color="primary"
+              @click="redirect('https://wa.me/62' + nomor.value + '?text=Hai')"
+            />
+          </q-page-sticky>
+        </div>
+      </div>
     </q-page>
   </transition>
 </template>
