@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="org.cordova.quasar.app" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="co.id.ardata.simvon1.app" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>SIMVON1</name>
     <description>Sisem Konveksi Online Smk Negeri 1 Sragen</description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
+    <author email="ardata.indonesia@gmail.com" href="http://ardata.co.id">
         Apache Cordova Team
     </author>
     <content src="index.html" />
