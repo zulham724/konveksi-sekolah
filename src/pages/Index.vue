@@ -43,22 +43,24 @@
               label="Beli produk"
             />
             <q-btn
-              style="width:90%; position: absolute; bottom: 90px; background-color:#7f8fa6;"
-              size="15px"
-              @click="redirect('http://bit.ly/simvon1sragen')"
-              rounded
-              text-color="white"
-              label="Beli lewat web "
-            />
-            <q-btn
-              style="width:90%; position: absolute; bottom: 40px;"
+              style="width:90%; background-color:#7f8fa6; position: absolute; bottom: 90px;"
               size="15px"
               @click="$router.push('/kustombaju')"
-              outline
               rounded
-              color="primary"
+              text-color="white"
               label="Kustom produk"
             />
+            <q-btn
+              border="2"
+              style=" width:90%; position: absolute; bottom:40px; "
+              size="15px"
+              @click="redirect('http://bit.ly/simvon1sragen')"
+              outline
+              rounded
+              text-color="primary"
+              label="Beli lewat web "
+            />
+
             <q-btn
               @click="$router.push('/tentang')"
               style="width:90%; position: absolute; bottom: 10px;"

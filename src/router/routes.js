@@ -8,8 +8,8 @@ import Celanadetail from 'pages/celanadetail.vue'
 import Bajupriadetail from 'pages/bajupriadetail.vue'
 import Bajuwanitadetail from 'pages/bajuwanitadetail.vue'
 import Rokdetail from 'pages/rokdetail.vue'
-import Wearpackdetail from 'pages/wearpackdetail.vue'
 import Tentang from 'pages/tentang.vue'
+import Panduan from 'pages/panduan.vue'
 const routes = [
   {
     path: '/',
@@ -43,10 +43,7 @@ const routes = [
         path: 'kustombaju/kustomjahit/rokdetail', 
         component: Rokdetail
       },
-      { 
-        path: 'kustombaju/kustomjahit/wearpackdetail', 
-        component: Wearpackdetail
-      },
+
       { 
         path: 'produkbaju/details/:id', props:true,
         component:Detailproduk,
@@ -58,6 +55,10 @@ const routes = [
       { 
         path: 'tentang', 
         component: Tentang
+      },
+      { 
+        path: 'panduan', 
+        component: Panduan
       },
     ]
   },

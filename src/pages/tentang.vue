@@ -73,11 +73,19 @@
           </q-card-section>
           <div class="row justify-center">
             <q-btn
-              outline
               rounded
               color="primary"
               label="Hubungi kami "
               @click="icon = true"
+              size="15px;"
+              style="margin:10px; border-radius : 20px; margin-left:10px; margin-rigth:10px; width: 93%;"
+            />
+            <q-btn
+              outline
+              rounded
+              color="primary"
+              label="Panduan "
+              @click="$router.push('/panduan')"
               size="15px;"
               style="margin:10px; border-radius : 20px; margin-left:10px; margin-rigth:10px; width: 93%;"
             />
@@ -113,6 +121,9 @@
           </q-card-section>
         </q-card>
       </q-dialog>
+      <q-dialog v-model="fixed">
+        <q-card> </q-card>
+      </q-dialog>
     </q-page>
   </transition>
 </template>
@@ -122,6 +133,7 @@ export default {
   data() {
     return {
       icon: false,
+      fixed: false,
       infotentang: {}
     };
   },

@@ -10,7 +10,7 @@
                   arrow_back
                 </span>
               </q-btn>
-              Beli produk
+              Beli Produk
             </q-toolbar-title>
           </q-toolbar>
         </q-header>
@@ -76,7 +76,7 @@
                     @click="$router.push('/produkbaju/details/' + info.id)"
                     size="10px"
                     style="border-radius : 50px; background-color: #2980b9; color:#ffff; margin:10px; width: 90%;"
-                    >Details</q-btn
+                    >Detail</q-btn
                   >
                 </div>
               </q-card>
